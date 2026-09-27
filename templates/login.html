@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login | Smart Attendance</title><link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"></head>
+<body class="login-page"><div class="login-card"><div class="logo">SA</div><p class="eyebrow">Smart Attendance</p><h1>Welcome back.</h1><p class="muted">Choose your account type and sign in.</p>
+{% with messages=get_flashed_messages(with_categories=true) %}{% for category,message in messages %}<div class="alert {{category}}">{{message}}</div>{% endfor %}{% endwith %}
+<form method="post" class="form"><label>Login as<select name="role" id="role" onchange="updateLabel()"><option>Faculty</option><option>Student</option></select></label>
+<label id="login-label">Username<input name="login_id" id="login_id" placeholder="admin" required></label><label>Password<input type="password" name="password" placeholder="admin123" required></label><button class="btn primary">Sign in</button></form>
+<div class="demo"><b>Faculty:</b> admin / admin123<br><b>Student:</b> CSE001 / student123</div></div>
+<script>function updateLabel(){const s=document.getElementById('role').value,l=document.getElementById('login-label'),i=document.getElementById('login_id');if(s==='Student'){l.firstChild.textContent='Roll Number';i.placeholder='CSE001'}else{l.firstChild.textContent='Username';i.placeholder='admin'}}</script></body></html>
